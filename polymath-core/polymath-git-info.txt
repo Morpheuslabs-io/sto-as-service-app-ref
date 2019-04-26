@@ -1,0 +1,3 @@
+https://github.com/PolymathNetwork/polymath-core.git
+branch  "dev-3.1.0"
+rev     7a70aa58f8481cf031d73a5e13b1869da1a1236a (Tue Apr 16)

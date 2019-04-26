@@ -1,0 +1,7 @@
+{
+  "OWNER_ADDR": "",
+  "OWNER_PASSPHRASE": "",
+  "OWNER_KEY_FILE_FOLDER": "./keyfile/mainnet",
+  "GAS_PRICE":  40010000000,
+  "GAS_LIMIT":  2000000
+}

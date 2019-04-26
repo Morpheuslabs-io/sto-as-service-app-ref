@@ -1,0 +1,15 @@
+{
+  "editor.formatOnSave": true,
+  "prettier.eslintIntegration": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/flow-typed": true,
+    "**/build": true
+  },
+  "flow.enabled": false,
+  "eslint.enable": false,
+  "tslint.enable": true,
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.importModuleSpecifier": "non-relative"
+}

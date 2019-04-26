@@ -1,0 +1,3 @@
+https://github.com/PolymathNetwork/polymath-apps.git
+branch  "develop"
+rev     0bfc0e0e37719516b7cdde4e6b1f07aa38961f5d (Wed Apr 10)

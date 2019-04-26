@@ -1,0 +1,14 @@
+node_modules
+build
+dist
+.idea
+.DS_STORE
+.env
+package-lock.json
+yarn-error.log
+coverage
+reports
+temp
+current-state.md
+junit.xml
+.docz

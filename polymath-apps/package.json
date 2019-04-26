@@ -1,0 +1,114 @@
+{
+  "name": "polymath-apps",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "@polymathnetwork/polymath-scripts/polymath-core"
+    ]
+  },
+  "version": "1.0.0-beta.0",
+  "scripts": {
+    "changelog": "node ./config/changelog.js",
+    "commit": "commit",
+    "clean:builds": "lerna exec --parallel --stream --scope=@polymathnetwork/{new-issuer,new-ui,investor,sdk,shared,new-shared} -- rm -rf ./build",
+    "clean:node_modules": "lerna exec --parallel --stream -- rm -rf ./node_modules",
+    "start:investor": "lerna exec --scope=@polymathnetwork/investor -- yarn start",
+    "start:issuer": "lerna exec --scope=@polymathnetwork/issuer -- yarn start",
+    "start:new-issuer": "lerna exec --scope=@polymathnetwork/new-issuer -- yarn start",
+    "start:offchain": "lerna exec --scope=@polymathnetwork/offchain -- yarn start",
+    "start:dev": "ttsc -b packages --watch",
+    "start:local-blockchain": "yarn local-blockchain:start",
+    "build:typedefs": "yarn build:shared-typedefs && yarn build:sdk-typedefs && yarn build:ui-typedefs && yarn build:issuer-typedefs",
+    "build:shared-typedefs": "ttsc -b packages/new-polymath-shared",
+    "build:sdk-typedefs": "ttsc -b packages/new-polymath-sdk",
+    "build:ui-typedefs": "ttsc -b packages/new-polymath-ui",
+    "build:issuer-typedefs": "ttsc -b packages/new-polymath-issuer",
+    "test": "lerna exec --stream -- yarn test --forceExit --passWithNoTests",
+    "test:investor": "lerna exec --stream --scope=@polymathnetwork/investor -- yarn test",
+    "test:issuer": "lerna exec --stream --scope=@polymathnetwork/issuer -- yarn test",
+    "test:new-issuer": "lerna exec --stream --scope=@polymathnetwork/new-issuer -- yarn test --forceExit --passWithNoTests",
+    "test:js": "lerna exec --stream --scope=@polymathnetwork/js -- yarn test",
+    "test:offchain": "lerna exec --stream --scope=@polymathnetwork/offchain -- yarn test",
+    "test:shared": "lerna exec --stream --scope=@polymathnetwork/shared -- yarn test",
+    "test:new-shared": "lerna exec --stream --scope=@polymathnetwork/new-shared -- yarn test",
+    "test:ui": "lerna exec --stream --scope=@polymathnetwork/ui -- yarn test --passWithNoTests",
+    "test:new-ui": "lerna exec --stream --scope=@polymathnetwork/new-ui -- yarn test --passWithNoTests",
+    "test:sdk": "lerna exec --stream --scope=@polymathnetwork/sdk -- yarn test",
+    "local-blockchain:start": "lerna run --stream --scope=@polymathnetwork/polymath-scripts local-blockchain:start -- --",
+    "build": "lerna run --parallel --stream build",
+    "build:apps": "lerna run --parallel --stream --scope=@polymathnetwork/{issuer,offchain} build",
+    "build:issuer": "lerna run --stream --scope=@polymathnetwork/issuer build",
+    "build:new-issuer": "lerna run --stream --scope=@polymathnetwork/new-issuer build",
+    "build:libs": "lerna run --parallel --stream --scope=@polymathnetwork/{auth,ui,js} build",
+    "build:heroku-apps": "lerna run --parallel --stream --scope=@polymathnetwork/offchain build",
+    "build:ui-website-backup": "lerna run --parallel --stream --scope=@polymathnetwork/ui build:website",
+    "build:ui-website": "echo \"skipping docz site until fixed.\"",
+    "build:contract-docs": "lerna run --scope=@polymathnetwork/polymath-scripts build:contract-docs",
+    "format": "prettier-eslint \"packages/*/src/**/*.js\" --write",
+    "flow:create-symlinks": "flow-mono create-symlinks ./.flowconfig",
+    "flow:create-stubs": "flow-mono create-stubs --use-root",
+    "flow:install-types": "flow-mono install-types --overwrite --ignoreDeps=peer",
+    "flow:align-versions": "flow-mono align-versions",
+    "postinstall": "rm -f node_modules/web3/index.d.ts node_modules/web3/types.d.ts",
+    "heroku-postbuild": "yarn build:heroku-apps"
+  },
+  "resolutions": {
+    "@types/react": "16.8.3",
+    "@types/react-dom": "16.8.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "7.3.1",
+    "@commitlint/config-conventional": "7.3.1",
+    "@commitlint/config-lerna-scopes": "7.3.1",
+    "@commitlint/prompt-cli": "7.3.1",
+    "@svgr/webpack": "^4.1.0",
+    "@types/styled-components": "4.1.3",
+    "@types/styled-system": "3.1.1",
+    "babel-eslint": "8.1.2",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-styled-components": "^1.10.0",
+    "common-tags": "^1.8.0",
+    "eslint": "4.19.1",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "flow-bin": "^0.81.0",
+    "flow-mono-cli": "^1.4.0",
+    "flow-typed": "^2.5.1",
+    "husky": "^1.0.0-rc.14",
+    "lerna": "^3.3.1",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.14.2",
+    "prettier-eslint-cli": "^4.7.1",
+    "source-map-explorer": "^1.6.0",
+    "tsconfig-paths": "^3.7.0",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "tslint-react": "^3.6.0",
+    "ttypescript": "1.5.6",
+    "typechain": "^0.3.9",
+    "typescript": "3.2.4"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{js,json,css,md}": [
+        "prettier-eslint --write",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "packages/**/fixtures/**/*.json"
+    ]
+  }
+}

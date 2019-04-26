@@ -1,0 +1,53 @@
+{
+  "name": "@polymathnetwork/js",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PolymathNetwork/polymath-apps.js.git"
+  },
+  "keywords": [
+    "smart",
+    "contracts",
+    "solidity",
+    "token",
+    "securityToken",
+    "ERC20",
+    "ST20"
+  ],
+  "author": "Polymath Inc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PolymathNetwork/polymath-apps/issues"
+  },
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"No tests yet. Change the 'test' command to 'jest' if you want to enable tests in this repository\"",
+    "build": "echo \"Polymath.js no longer requires being built. Skipping...\"",
+    "typecheck": "flow --show-all-branches"
+  },
+  "homepage": "https://github.com/PolymathNetwork/polymath-apps#readme",
+  "devDependencies": {
+    "@babel/cli": "7.1.0",
+    "@babel/core": "7.1.0",
+    "@babel/node": "7.0.0",
+    "@babel/plugin-proposal-export-default-from": "7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0",
+    "@babel/plugin-transform-react-jsx": "7.0.0",
+    "@babel/preset-env": "7.0.0",
+    "@babel/preset-flow": "7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "flow-bin": "^0.81.0",
+    "husky": "0.14.3",
+    "jest": "^24.1.0",
+    "webpack": "^4.19.0",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "@polymathnetwork/shared": "0.0.0",
+    "bignumber.js": "5.0.0",
+    "bs58": "^4.0.1",
+    "redux": "3.7.2",
+    "redux-thunk": "2.2.0",
+    "web3": "1.0.0-beta.30"
+  }
+}

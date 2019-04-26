@@ -1,0 +1,89 @@
+{
+  "name": "@polymathnetwork/offchain",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=8.9"
+  },
+  "scripts": {
+    "start": "node -r ./babel.register.js src/server.js",
+    "test": "echo \"Offchain tests disabled until the repo is moved to Typescript\"",
+    "start:dist": "node ./build/server.js",
+    "build": "yarn build:shared && yarn build:artifacts && babel --root-mode upward --ignore /node_modules/ src --out-dir build",
+    "build:shared": "rm -rf ../polymath-shared/build && babel --root-mode upward --ignore /node_modules/  ../polymath-shared/src --out-dir ../polymath-shared/build --copy-files",
+    "build:artifacts": "rm -rf ../new-polymath-scripts/build && babel --root-mode upward --ignore /node_modules/  ../new-polymath-scripts/src/fixtures --out-dir ../new-polymath-scripts/build/fixtures --copy-files",
+    "typecheck": "flow --show-all-branches"
+  },
+  "dependencies": {
+    "@koa/cors": "^2.2.1",
+    "@polymathnetwork/shared": "0.0.0",
+    "@sendgrid/mail": "^6.2.1",
+    "bluebird": "^3.5.2",
+    "ddos": "^0.1.30",
+    "dotenv": "^6.0.0",
+    "eth-sig-util": "^1.4.2",
+    "ethereumjs-util": "^5.1.5",
+    "koa": "^2.5.0",
+    "koa-body": "^2.5.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "mongoose": "^5.0.14",
+    "moment": "2.20.1",
+    "react": "16.4.0",
+    "react-dom": "16.4.0",
+    "web3": "1.0.0-beta.30",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.1.0",
+    "@babel/register": "7.0.0",
+    "@babel/plugin-proposal-class-properties": "7.0.0",
+    "@babel/plugin-proposal-export-default-from": "7.0.0",
+    "@babel/plugin-syntax-async-generators": "7.0.0",
+    "@babel/plugin-transform-regenerator": "7.0.0",
+    "@babel/plugin-transform-runtime": "7.0.0",
+    "@babel/preset-env": "7.0.0",
+    "@babel/preset-flow": "7.0.0",
+    "@babel/preset-react": "7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "9.0.0",
+    "babel-jest": "22.4.3",
+    "babel-loader": "^8.0.2",
+    "eslint-config-react-app": "2.1.0",
+    "flow-bin": "^0.81.0",
+    "jest": "^24.1.0",
+    "jest-junit": "^5.2.0",
+    "react-test-renderer": "^16.5.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js}"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/startup/!(setupWeb3)",
+      "!**/index.js",
+      "!src/server.js",
+      "!src/specsInit.js"
+    ],
+    "setupFiles": [
+      "./src/specsInit.js"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "cobertura",
+      "text"
+    ],
+    "coverageDirectory": "<rootDir>/reports",
+    "reporters": [
+      "jest-junit",
+      "default"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "<rootDir>/../../config/babelJestWrapper"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@import '~@polymathnetwork/ui/src/deprecated/styles/_variables.scss';
+
+.pui-notice-bar {
+  height: $navbar-height;
+  width: 100%;
+  background: #db2c3e;
+
+  .pui-notice-bar-contents {
+    height: 100%;
+    padding: 0 calc(64px + 2%);
+    margin: 0 auto;
+    max-width: 1600px;
+    display: flex;
+
+    .pui-notice-bar-title {
+      height: 100%;
+      font-size: 20px;
+      color: white;
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+
+      svg {
+        flex-shrink: 0;
+        margin-right: 8px;
+      }
+    }
+
+    .pui-notice-bar-text {
+      height: 100%;
+      font-size: 12px;
+      color: white;
+      line-height: 16px;
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+
+      a {
+        color: #5068a4;
+      }
+    }
+
+    .pui-notice-bar-close {
+      cursor: pointer;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+  }
+
+  &.pui-notice-bar-warning {
+    background-color: #efc100;
+  }
+
+  &.pui-notice-bar-info {
+    background-color: #5aaafa;
+  }
+}

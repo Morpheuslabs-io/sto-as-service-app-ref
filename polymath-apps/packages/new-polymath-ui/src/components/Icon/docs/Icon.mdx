@@ -1,0 +1,21 @@
+---
+name: Icon
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz';
+
+import { Icon, IconDocz } from '../';
+import * as icons from '~/images/icons';
+
+# FormItem
+
+<PropsTable of={IconDocz} />
+
+## Basic usage
+
+<Playground>
+  <Icon Asset={icons.SvgDot} />
+  <Icon Asset={icons.SvgAlert} rotate="0.5turn" />
+  <Icon Asset={icon.SvgChecklist} scale="0.5" />
+</Playground>

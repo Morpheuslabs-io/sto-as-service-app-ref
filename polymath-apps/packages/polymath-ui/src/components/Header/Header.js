@@ -11,7 +11,7 @@ import Block from '../Block';
 
 import { thousandsDelimiter, addressShortifier } from '../../helpers';
 
-import polyLogo from '../../images/logo.svg';
+import polyLogo from '../../images/logo.png';
 import networkIcon from '../../images/icons/network.svg';
 import polyIcon from '../../images/icons/poly.svg';
 import accountIcon from '../../images/icons/account.svg';

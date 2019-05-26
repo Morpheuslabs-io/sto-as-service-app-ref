@@ -15,7 +15,7 @@ import GenericStatus from './status/GenericStatus';
 import PageCentered from '../PageCentered';
 import ContentBox from '../ContentBox';
 
-import logo from '../../images/logo.svg';
+import logo from '../../images/logo.png';
 
 import './style.scss';
 

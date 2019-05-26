@@ -1,1 +1,7 @@
 mongodb
+node_modules
+.DS_Store
+.idea
+build
+package-lock.json
+yarn-error.log

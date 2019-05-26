@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'carbon-components-react';
 
 import Page from '../Page';
-import logo from '../../images/logo.svg';
+import logo from '../../images/logo.png';
 import illustration from '../../images/illustration.png';
 
 import './style.scss';

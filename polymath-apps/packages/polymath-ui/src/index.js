@@ -102,7 +102,7 @@ export { uiReducer, networkReducer } from './redux/reducer';
 /**
  * Assets
  */
-export { default as logo } from './images/logo.svg';
+export { default as logo } from './images/logo.png';
 export { default as bull } from './images/bull.png';
 export { default as metamask } from './images/metamask.png';
 export { default as icoBriefcase } from './images/svg/briefcase';

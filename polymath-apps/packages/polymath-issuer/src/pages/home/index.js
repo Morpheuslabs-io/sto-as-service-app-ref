@@ -5,7 +5,7 @@ import { PageCentered, Button } from '@polymathnetwork/ui';
 export default class HomePage extends Component {
   render() {
     return (
-      <PageCentered title="Polymath" justifyContent="start">
+      <PageCentered title="Morpheus Labs" justifyContent="start">
         <div className="splash-background-pattern" />
         <div className="splash-background" />
         <div>
@@ -16,7 +16,8 @@ export default class HomePage extends Component {
             <br /> of Securities Tokens
           </h1>
           <h3 className="pui-h3">
-            Polymath enables trillions of dollars of securities to be issued
+            Morpheus Labs enables trillions of dollars of securities to be
+            issued
             <br /> and traded on the blockchain.
           </h3>
           <br />

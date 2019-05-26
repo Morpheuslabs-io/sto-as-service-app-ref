@@ -76,7 +76,7 @@ const Footer = (props: Props) => {
       <PageWrap>
         <Inner>
           <span className="pui-footer-text">
-            &copy; {new Date().getFullYear()} {props.title || 'Polymath'}
+            &copy; {new Date().getFullYear()} {props.title || 'Morpheus Labs'}
           </span>
           <Links className="pui-footer-links" variant={props.variant}>
             <li>

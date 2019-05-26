@@ -49,14 +49,14 @@ export class SignInPage extends PureComponent<Props> {
     const desc = (
       <span>
         Once you have digitally signed the verification code with your MetaMask
-        wallet, your wallet will allow you to single-sign into your Polymath
+        wallet, your wallet will allow you to single-sign into your Morpheus Labs
         account without the need for a dedicated username and password
         combination.
       </span>
     );
 
     return (
-      <PageCentered title="Sign In – Polymath" id={pageId}>
+      <PageCentered title="Sign In – Morpheus Labs" id={pageId}>
         <ContentBox maxWidth={735}>
           {ico}
           {this.props.isSignInCancelled ? (

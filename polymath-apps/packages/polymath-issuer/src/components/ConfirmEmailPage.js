@@ -62,7 +62,7 @@ const ConnectedForm = connect(mapStateToProps)(FormikEnhancedForm);
 class ConfirmEmailPage extends Component {
   render() {
     return (
-      <PageCentered title="Sign In – Polymath" id="verify-email-address">
+      <PageCentered title="Sign In – Morpheus Labs" id="verify-email-address">
         <ContentBox maxWidth={735}>
           <div className="pui-single-box-header">
             <div className="pui-single-box-bull">

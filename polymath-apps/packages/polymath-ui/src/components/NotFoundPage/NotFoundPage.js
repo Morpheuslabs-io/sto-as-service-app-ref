@@ -9,7 +9,7 @@ import Heading from '../Heading';
 export default class NotFoundPage extends Component<{}> {
   render() {
     return (
-      <PageCentered title="Sign In – Polymath">
+      <PageCentered title="Sign In – Morpheus Labs">
         <ContentBox maxWidth={735}>
           <Heading as="h1" variant="h1" textAlign="center">
             Page not found

@@ -6,8 +6,7 @@ export default class HomePage extends Component {
   render() {
     return (
       <PageCentered title="Morpheus Labs" justifyContent="start">
-        <div className="splash-background-pattern" />
-        <div className="splash-background" />
+        
         <div>
           <h1 className="pui-h0">
             The Next Mega-Trend

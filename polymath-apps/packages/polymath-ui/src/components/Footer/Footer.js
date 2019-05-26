@@ -78,32 +78,34 @@ const Footer = (props: Props) => {
           <span className="pui-footer-text">
             &copy; {new Date().getFullYear()} {props.title || 'Morpheus Labs'}
           </span>
-          <Links className="pui-footer-links" variant={props.variant}>
-            <li>
-              <a
-                href={
-                  props.termsOfService ||
-                  'https://polymath.network/termsofservice.html'
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Terms Of Service
-              </a>
-            </li>
-            <li>
-              <a
-                href={
-                  props.privacyPolicy ||
-                  'https://polymath.network/privacypolicy.html'
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Privacy Policy
-              </a>
-            </li>
-          </Links>
+          {
+          // <Links className="pui-footer-links" variant={props.variant}>
+          //   <li>
+          //     <a
+          //       href={
+          //         props.termsOfService ||
+          //         'https://polymath.network/termsofservice.html'
+          //       }
+          //       target="_blank"
+          //       rel="noopener noreferrer"
+          //     >
+          //       Terms Of Service
+          //     </a>
+          //   </li>
+          //   <li>
+          //     <a
+          //       href={
+          //         props.privacyPolicy ||
+          //         'https://polymath.network/privacypolicy.html'
+          //       }
+          //       target="_blank"
+          //       rel="noopener noreferrer"
+          //     >
+          //       Privacy Policy
+          //     </a>
+          //   </li>
+          // </Links>
+          }
         </Inner>
       </PageWrap>
     </Container>

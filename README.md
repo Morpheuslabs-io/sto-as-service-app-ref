@@ -29,16 +29,16 @@ It's recommended to use the stack on the ML BPaaS platform with at least 4GB RAM
 
 Start it by running this cmd `pm2 start script_start_mongo.sh`. Its data is stored in the folder `mongodb`
 
-### Off-chain API server and Issuer board
+### Install dependencies
 
 Please cd to the folder `polymath-apps` and run the cmd `yarn` for installation of dependencies
 
-#### Off-chain API server
+### Off-chain API server
 
   - Adapt the configuration file `.env` inside the subfolder `polymath-apps/packages/polymath-offchain`
   - To start, run this cmd `pm2 start pm2/script_server_offchain.sh` from the folder `polymath-apps`
 
-#### Issuer board
+### Issuer board
 
   - Adapt the configuration file `.env` inside the subfolder `polymath-apps/packages/polymath-issuer`
   - To start, run this cmd `pm2 start pm2/script_issuer.sh` from the folder `polymath-apps`

@@ -1,0 +1,49 @@
+# UI customization of the Polymath's STO system
+
+  - Please refer to the README file for a overview of the STO system.
+
+  - Please be noted that the components of `new-polymath-...` are not in use.
+
+## UI change
+
+UI parts include the following components:
+
+  - `polymath-apps/packages/polymath-ui`: provide common UI components used by the `Issuer` board and some others
+
+  - `polymath-apps/packages/polymath-issuer`: UI component of the `Issuer`
+
+### Favicon and logo
+
+  - `favicon` is defined in `polymath-apps/packages/polymath-issuer/public/favicons/`
+  - `logo` is defined in `polymath-apps/packages/polymath-ui/src/images/logo.png`
+  - Files need to be changed:
+    - `polymath-apps/packages/polymath-ui/src/components/Header/Header.js`
+    - `polymath-apps/packages/polymath-ui/src/index.js`
+    - `polymath-apps/packages/polymath-ui/src/components/MetamaskStatus/MetamaskStatus.js`
+    - `polymath-apps/packages/polymath-ui/src/components/NotSupportedPage/NotSupportedPage.js`
+
+### Background image
+
+In this file `polymath-apps/packages/polymath-issuer/src/pages/home/index.js`
+
+```
+<div className="splash-background-pattern" />
+<div className="splash-background" />
+```
+
+### Header and Footer
+
+  - Header: `polymath-apps/packages/polymath-ui/src/components/Header/Header.js`
+  - Footer: `polymath-apps/packages/polymath-ui/src/components/Footer/Footer.js`
+
+### Trademark
+
+`Polymath` trademark can be replaced in the following files:
+
+  - `polymath-apps/packages/polymath-issuer/src/components/ConfirmEmailPage.js`
+  - `polymath-apps/packages/polymath-ui/src/components/NotFoundPage/NotFoundPage.js`
+  - `polymath-apps/packages/polymath-ui/src/components/SignInPage/SignInPage.js`
+  - `polymath-apps/packages/polymath-issuer/src/pages/ticker/TickerPage.js`
+
+
+

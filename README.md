@@ -1,4 +1,6 @@
-# STO as service
+# STO as service reference application
+
+This is a reference application to issue and manage STO tokens based on Polymath. The platform users can explore, modify, run and test this application.
 
   - Provide STO (Security Token Offering) as a service with UI that facilitates the STO launching by simply specifying the required information. 
   - For use, Metamask as the user in-browser wallet is needed.

@@ -1,8 +1,9 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.4.24;
 
 import "../interfaces/IOracle.sol";
 
 contract MockOracle is IOracle {
+
     address public currency;
     bytes32 public currencySymbol;
     bytes32 public denominatedCurrency;
@@ -43,7 +44,7 @@ contract MockOracle is IOracle {
     /**
     * @notice Returns price - should throw if not valid
     */
-    function getPrice() external returns(uint256) {
+    function getPrice() external view returns(uint256) {
         return price;
     }
 

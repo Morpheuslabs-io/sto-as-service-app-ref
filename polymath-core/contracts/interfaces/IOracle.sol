@@ -1,6 +1,7 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.4.24;
 
 interface IOracle {
+
     /**
     * @notice Returns address of oracle currency (0x0 for ETH)
     */
@@ -19,6 +20,6 @@ interface IOracle {
     /**
     * @notice Returns price - should throw if not valid
     */
-    function getPrice() external returns(uint256);
+    function getPrice() external view returns(uint256);
 
 }

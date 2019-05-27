@@ -2,12 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: maxsam4/solidity-kit
+      - image: circleci/node:8
     steps:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run: yarn install
+      - run: sudo npm i truffle -g
       - run: node --version
       - run: truffle version
       - run: truffle compile
@@ -17,13 +18,14 @@ jobs:
             - node_modules
   test:
     docker:
-      - image: maxsam4/solidity-kit
+      - image: circleci/node:8
     parallelism: 2
     steps:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run: yarn install
+      - run: sudo npm i truffle -g
       - run: node --version
       - run: truffle version
       - run: npm run test
@@ -37,7 +39,7 @@ jobs:
           path: ./test-results/mocha/results.xml
   coverage:
     docker:
-      - image: maxsam4/solidity-kit
+      - image: maxsam4/solidity-kit:0.4.24
     steps:
       - checkout
       - restore_cache:
@@ -45,8 +47,9 @@ jobs:
       - run: yarn install
       - run: node --version
       - run: truffle version
+      - run: node_modules/.bin/truffle version
       - run: 
-          command: npm run coverage
+          command: scripts/coverage.sh
           no_output_timeout: 1h
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
@@ -54,9 +57,9 @@ jobs:
             - node_modules
       - store_artifacts:
           path: ./coverage/lcov.info
-  clash-check:
+  deploy_kovan:
     docker:
-      - image: maxsam4/solidity-kit
+      - image: maxsam4/solidity-kit:0.4.24
     steps:
       - checkout
       - restore_cache:
@@ -64,19 +67,21 @@ jobs:
       - run: yarn install
       - run: node --version
       - run: truffle version
-      - run: npm run clash-check
+      - run: mv truffle-ci.js truffle-config.js
+      - run: npm run deploy-kovan
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
   docs:
     docker:
-      - image: maxsam4/solidity-kit
+      - image: circleci/node:8
     steps:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run: yarn install
+      - run: sudo npm i truffle -g
       - run: node --version
       - run: truffle version
       - run: npm run docs
@@ -89,7 +94,6 @@ workflows:
   commit:
     jobs:
       - coverage
-      - clash-check
   daily-builds:
     triggers:
       - schedule:
@@ -110,3 +114,13 @@ workflows:
             branches:
               only:
                 - master
+  deploy:
+    jobs:
+      - deploy_kovan:
+          filters:
+            branches:
+              only:
+                - master
+                - dev-2.1.0
+                - dev-2.2.0
+                - dev-3.0.0

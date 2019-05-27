@@ -1,35 +1,30 @@
-const fs = require("fs");
-const path = require("path");
-const exec = require('child_process').execSync;
-const chalk = require('chalk');
-const { table }  = require("table");
+const fs = require('fs');
+const path = require('path');
+var size = new Array();
 
-async function readFiles() {
-    if (fs.existsSync("./build/contracts/")) {
-        return fs.readdirSync("./build/contracts/");
+
+
+function readFiles() {
+    if (fs.existsSync('./build/contracts/')) {
+        let files = fs.readdirSync('./build/contracts/');
+        return files;
     } else {
-        console.log('Compiling contracts. This may take a while, please wait.');
-        exec('truffle compile');
-        return fs.readdirSync("./build/contracts/");
+        console.log("Directory doesn't exists");
     }
 }
 
 async function printSize() {
-    let files = await readFiles();
+    let files = readFiles();
+    files.forEach((item) => {
+        let content = JSON.parse(fs.readFileSync(`./build/contracts/${item}`).toString()).deployedBytecode;
+        let sizeInKB = ((content.toString()).length / 2) / 1024;
+        size.push(sizeInKB);
+    });
     console.log(`NOTE- Maximum size of contracts allowed to deloyed on the Ethereum mainnet is 24 KB(EIP170)`);
     console.log(`---- Size of the contracts ----`);
-    let dataTable = [['Contracts', 'Size in KB']];
-    files.forEach(item => {
-        let content = JSON.parse(fs.readFileSync(`./build/contracts/${item}`).toString()).deployedBytecode;
-        let sizeInKB = content.toString().length / 2 / 1024;
-        if (sizeInKB > 24)
-            dataTable.push([chalk.red(path.basename(item, ".json")),chalk.red(sizeInKB)]);
-        else if (sizeInKB > 20)
-            dataTable.push([chalk.yellow(path.basename(item, ".json")),chalk.yellow(sizeInKB)]);
-        else
-            dataTable.push([chalk.green(path.basename(item, ".json")),chalk.green(sizeInKB)]);
-    });
-    console.log(table(dataTable));
+    for(let i = 0; i < files.length; i++) {
+        console.log(`${path.basename(files[i], '.json')} -  ${size[i]} KB`);
+    }
 }
 
 printSize();

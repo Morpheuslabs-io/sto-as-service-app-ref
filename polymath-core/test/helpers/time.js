@@ -2,44 +2,38 @@
 // aren’t included within the original RPC specification.
 // See https://github.com/ethereumjs/testrpc#implemented-methods
 
-async function advanceBlock() {
-  return new Promise((resolve, reject) => {
-      web3.currentProvider.send({
-        jsonrpc: '2.0',
-        method: 'evm_mine',
-      },
-      (err, result) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(result.result);
-      }
-    );
-  });
-}
+function increaseTime(duration) {
+    const id = Date.now();
 
-// Increases ganache time by the passed duration in seconds
-async function increaseTime(duration) {
-  await new Promise((resolve, reject) => {
-      web3.currentProvider.send({
-        jsonrpc: '2.0',
-        method: 'evm_increaseTime',
-        params: [duration],
-      },
-      (err, result) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(result.result);
-      }
-    );
-  });
-  await advanceBlock();
-}
-
-async function takeSnapshot() {
     return new Promise((resolve, reject) => {
-        web3.currentProvider.send(
+        web3.currentProvider.sendAsync(
+            {
+                jsonrpc: "2.0",
+                method: "evm_increaseTime",
+                params: [duration],
+                id: id
+            },
+            err1 => {
+                if (err1) return reject(err1);
+
+                web3.currentProvider.sendAsync(
+                    {
+                        jsonrpc: "2.0",
+                        method: "evm_mine",
+                        id: id + 1
+                    },
+                    (err2, res) => {
+                        return err2 ? reject(err2) : resolve(res);
+                    }
+                );
+            }
+        );
+    });
+}
+
+export default function takeSnapshot() {
+    return new Promise((resolve, reject) => {
+        web3.currentProvider.sendAsync(
             {
                 jsonrpc: "2.0",
                 method: "evm_snapshot",
@@ -57,28 +51,9 @@ async function takeSnapshot() {
     });
 }
 
-async function jumpToTime(timestamp) {
-  await new Promise(
-    (resolve, reject) => {
-      web3.currentProvider.send({
-        jsonrpc: '2.0',
-        method: "evm_mine",
-        params: [timestamp],
-      },
-      (err, result) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(result.result);
-      }
-    );
-  });
-  await advanceBlock();
-}
-
-async function revertToSnapshot(snapShotId) {
+function revertToSnapshot(snapShotId) {
     return new Promise((resolve, reject) => {
-        web3.currentProvider.send(
+        web3.currentProvider.sendAsync(
             {
                 jsonrpc: "2.0",
                 method: "evm_revert",
@@ -96,4 +71,4 @@ async function revertToSnapshot(snapShotId) {
     });
 }
 
-export { increaseTime, takeSnapshot, revertToSnapshot, jumpToTime };
+export { increaseTime, takeSnapshot, revertToSnapshot };

@@ -1,9 +1,11 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.4.24;
 
-import "openzeppelin-solidity/contracts/token/ERC20/ERC20Mintable.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/MintableToken.sol";
 
-contract PolyToken is ERC20Mintable {
-    constructor() public {
+
+contract PolyToken is MintableToken {
+
+    constructor () public {
 
     }
 

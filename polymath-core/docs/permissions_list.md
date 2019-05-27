@@ -14,23 +14,14 @@
             <td rowspan=24> Checkpoint </td>
             <td rowspan=12>ERC20DividendCheckpoint</td>
             <td>pushDividendPayment()</td>
-            <td rowspan=5> withPerm(OPERATOR)</td>
+            <td rowspan=2> withPerm(DISTRIBUTE)</td>
         </tr>
         <tr>
             <td>pushDividendPaymentToAddresses()</td>
         </tr>
-        </tr>
-            <td> createCheckpoint() </td>
-        </tr>
-        <tr>
-            <td> reclaimDividend() </td>
-        </tr>
-        <tr>
-            <td> withdrawWithholding() </td>
-        </tr>
         <tr>
             <td> setDefaultExcluded() </td>
-            <td rowspan=7> withPerm(ADMIN) </td>
+            <td rowspan=9> withPerm(MANAGE) </td>
         </tr>
         <tr>
             <td> setWithholding() </td>
@@ -49,27 +40,28 @@
         </tr>
         <tr>
             <td> createDividendWithCheckpointAndExclusions() </td>
+        </tr>
+        <tr>
+            <td> reclaimDividend() </td>
+        </tr>
+        <tr>
+            <td> withdrawWithholding() </td>
+        </tr>
+        </tr>
+            <td> createCheckpoint() </td>
+            <td> withPerm(CHECKPOINT) </td>
         </tr>
         <tr>
             <td rowspan=12>EtherDividendCheckpoint</td>
             <td>pushDividendPayment()</td>
-            <td rowspan=5> withPerm(OPERATOR) </td>
+            <td rowspan=2> withPerm(DISTRIBUTE) </td>
         </tr>
         <tr>
             <td>pushDividendPaymentToAddresses()</td>
         </tr>
-        </tr>
-            <td> createCheckpoint() </td>
-        </tr>
-        <tr>
-            <td> reclaimDividend() </td>
-        </tr>
-        <tr>
-            <td> withdrawWithholding() </td>
-        </tr>
         <tr>
             <td> setDefaultExcluded() </td>
-            <td rowspan=7> withPerm(ADMIN) </td>
+            <td rowspan=9> withPerm(MANAGE) </td>
         </tr>
         <tr>
             <td> setWithholding() </td>
@@ -90,13 +82,20 @@
             <td> createDividendWithCheckpointAndExclusions() </td>
         </tr>
         <tr>
-            <td rowspan=4> PermissionManager </td>
-            <td rowspan=4>GeneralPermissionManager</td>
-            <td>addDelegate()</td>
-            <td rowspan=4> withPerm(ADMIN)</td>
+            <td> reclaimDividend() </td>
         </tr>
         <tr>
-            <td> deleteDelegate() </td>
+            <td> withdrawWithholding() </td>
+        </tr>
+        </tr>
+            <td> createCheckpoint() </td>
+            <td> withPerm(CHECKPOINT) </td>
+        </tr>
+         <tr>
+            <td rowspan=3> PermissionManager </td>
+            <td rowspan=3>GeneralPermissionManager</td>
+            <td>addDelegate()</td>
+            <td rowspan=3> withPerm(CHANGE_PERMISSION)</td>
         </tr>
         <tr>
             <td> changePermission() </td>
@@ -108,7 +107,7 @@
             <td rowspan=10>STO</td>
             <td>CappedSTO</td>
             <td> - </td>
-            <td> - </td>
+             <td> - </td>
         </tr>
         <tr>
             <td>DummySTO</td>
@@ -116,21 +115,15 @@
             <td> - </td>
         </tr>
         <tr>
-            <td rowspan=9> USDTieredSTO </td>
+            <td rowspan=6> USDTieredSTO </td>
             <td> modifyFunding() </td>
-            <td rowspan=9> onlyOwner </td>
+            <td rowspan=6> onlyOwner </td>
         </tr>
         <tr>
             <td> modifyLimits() </td>
         </tr>
         <tr>
-            <td> modifyFunding() </td>
-        </tr>
-        <tr>
             <td> modifyTiers() </td>
-        </tr>
-        <tr>
-            <td> modifyTimes() </td>
         </tr>
         <tr>
             <td> modifyAddresses() </td>
@@ -139,15 +132,12 @@
             <td> finalize() </td>
         </tr>
         <tr>
-            <td> changeNonAccreditedLimit() </td>
-        </tr>
-        <tr>
-            <td> changeAllowBeneficialInvestments() </td>
+            <td> changeAccredited() </td>
         </tr>
         <tr>
             <td rowspan=2>PreSaleSTO</td>
             <td>allocateTokens()</td>
-            <td rowspan=2>withPerm(ADMIN)</td>
+            <td rowspan=2>withPerm(PRE_SALE_ADMIN)</td>
         </tr>
         <tr>
             <td>allocateTokensMulti()</td>
@@ -159,9 +149,9 @@
             <td>withPerm(ADMIN)</td>
         </tr>
          <tr>
-            <td rowspan=10>GeneralTransferManager</td>
+            <td rowspan=8>GeneralTransferManager</td>
             <td>changeIssuanceAddress()</td>
-            <td rowspan=10>withPerm(ADMIN)</td>
+            <td rowspan=6>withPerm(FLAGS)</td>
         </tr>
          <tr>
             <td>changeSigningAddress()</td>
@@ -179,50 +169,31 @@
             <td>changeAllowAllBurnTransfers()</td>
         </tr>
         <tr>
-            <td>modifyKYCData()</td>
-        </tr>
-        <tr>
-            <td>modifyKYCDataMulti()</td>
-        </tr>
-        </tr>
-            <td>modifyInvestorFlag</td>
-        </tr>
-        </tr>
-            <td>modifyInvestorFlagMulti</td>
-        </tr>
-        <tr>
-            <td rowspan=7>ManualApprovalTransferManager</td>
-            <td>addManualApproval()</td>
-            <td rowspan=7>withPerm(ADMIN)</td>
-        </tr>
-        <tr>
-            <td>addManualApproval()</td>
-        </tr>
-        <tr>
-            <td>addManualApprovalMulti()</td>
-        </tr>
-        <tr>
-            <td>modifyManualApproval()</td>
-        </tr>
-        <tr>
-            <td>modifyManualApprovalMulti()</td>
-        </tr>
-        <tr>
-            <td>revokeManualApproval()</td>
-        </tr>
-        <tr>
-            <td>revokeManualApprovalMulti()</td>
-        </tr>
-        <tr>
-            <td rowspan=4>PercentageTransferManager</td>
             <td>modifyWhitelist()</td>
-            <td rowspan=4>withPerm(ADMIN)</td>
+            <td rowspan=2>withPerm(WHITELIST)</td>
+        </tr>
+        <tr>
+            <td>modifyWhitelistMulti()</td>
+        </tr>
+        <tr>
+          <td rowspan=2>ManualApprovalTransferManager</td>
+          <td>addManualApproval()</td>
+          <td rowspan=2>withPerm(TRANSFER_APPROVAL)</td>
+        </tr>
+        <tr>
+          <td>revokeManualApproval()</td>
+        </tr>
+        <tr>
+          <td rowspan=4>PercentageTransferManager</td>
+          <td>modifyWhitelist()</td>
+          <td rowspan=2>withPerm(WHITELIST)</td>
         </tr>
         <tr>
             <td> modifyWhitelistMulti() </td>
         </tr>
         <tr>
             <td> setAllowPrimaryIssuance() </td>
+            <td rowspan=2> withPerm(ADMIN) </td>
         </tr>
         <tr>
             <td> changeHolderPercentage() </td>
@@ -319,18 +290,14 @@
             <td>onlyOwner</td>
         </tr>
         <tr>
-            <td>sendToTreasury</tr>
-            <td rowspan=3>withPerm(OPERATOR)</td>
+            <td>depositTokens()</td>
+            <td rowspan=15>withPerm(ADMIN)</td>
+        </tr>
+        <tr>
+            <td>sendToTreasury()</td>
         </tr>
         <tr>
             <td>pushAvailableTokens()</td>
-        </tr>
-        <tr>
-            <td>pushAvailableTokensMulti()</td>
-        </tr>
-        <tr>
-            <td>depositTokens()</td>
-            <td rowspan=12>withPerm(ADMIN)</td>
         </tr>
         <tr>
             <td>addTemplate()</td>
@@ -352,6 +319,9 @@
         </tr>
         <tr>
             <td>revokeAllSchedules()</td>
+        </tr>
+        <tr>
+            <td>pushAvailableTokensMulti()</td>
         </tr>
         <tr>
             <td>addScheduleMulti()</td>

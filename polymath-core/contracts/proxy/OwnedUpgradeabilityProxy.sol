@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.4.18;
 
 import "./UpgradeabilityProxy.sol";
 
@@ -7,6 +7,7 @@ import "./UpgradeabilityProxy.sol";
  * @dev This contract combines an upgradeability proxy with basic authorization control functionalities
  */
 contract OwnedUpgradeabilityProxy is UpgradeabilityProxy {
+
     // Owner of the contract
     address private __upgradeabilityOwner;
 
@@ -39,7 +40,7 @@ contract OwnedUpgradeabilityProxy is UpgradeabilityProxy {
     * @dev Tells the address of the owner
     * @return the address of the owner
     */
-    function _upgradeabilityOwner() internal view returns(address) {
+    function _upgradeabilityOwner() internal view returns (address) {
         return __upgradeabilityOwner;
     }
 
@@ -54,7 +55,7 @@ contract OwnedUpgradeabilityProxy is UpgradeabilityProxy {
     /**
     * @notice Internal function to provide the address of the implementation contract
     */
-    function _implementation() internal view returns(address) {
+    function _implementation() internal view returns (address) {
         return __implementation;
     }
 
@@ -62,7 +63,7 @@ contract OwnedUpgradeabilityProxy is UpgradeabilityProxy {
     * @dev Tells the address of the proxy owner
     * @return the address of the proxy owner
     */
-    function proxyOwner() external ifOwner returns(address) {
+    function proxyOwner() external ifOwner returns (address) {
         return _upgradeabilityOwner();
     }
 
@@ -70,7 +71,7 @@ contract OwnedUpgradeabilityProxy is UpgradeabilityProxy {
     * @dev Tells the version name of the current implementation
     * @return string representing the name of the current version
     */
-    function version() external ifOwner returns(string memory) {
+    function version() external ifOwner returns (string) {
         return __version;
     }
 
@@ -78,7 +79,7 @@ contract OwnedUpgradeabilityProxy is UpgradeabilityProxy {
     * @dev Tells the address of the current implementation
     * @return address of the current implementation
     */
-    function implementation() external ifOwner returns(address) {
+    function implementation() external ifOwner returns (address) {
         return _implementation();
     }
 
@@ -97,7 +98,7 @@ contract OwnedUpgradeabilityProxy is UpgradeabilityProxy {
     * @param _newVersion representing the version name of the new implementation to be set.
     * @param _newImplementation representing the address of the new implementation to be set.
     */
-    function upgradeTo(string calldata _newVersion, address _newImplementation) external ifOwner {
+    function upgradeTo(string _newVersion, address _newImplementation) external ifOwner {
         _upgradeTo(_newVersion, _newImplementation);
     }
 
@@ -109,16 +110,10 @@ contract OwnedUpgradeabilityProxy is UpgradeabilityProxy {
     * @param _data represents the msg.data to bet sent in the low level call. This parameter may include the function
     * signature of the implementation to be called with the needed payload
     */
-    function upgradeToAndCall(string calldata _newVersion, address _newImplementation, bytes calldata _data) external payable ifOwner {
-        _upgradeToAndCall(_newVersion, _newImplementation, _data);
-    }
-
-    function _upgradeToAndCall(string memory _newVersion, address _newImplementation, bytes memory _data) internal {
+    function upgradeToAndCall(string _newVersion, address _newImplementation, bytes _data) external payable ifOwner {
         _upgradeTo(_newVersion, _newImplementation);
-        bool success;
         /*solium-disable-next-line security/no-call-value*/
-        (success, ) = address(this).call.value(msg.value)(_data);
-        require(success, "Fail in executing the function of implementation contract");
+        require(address(this).call.value(msg.value)(_data), "Fail in executing the function of implementation contract");
     }
 
 }

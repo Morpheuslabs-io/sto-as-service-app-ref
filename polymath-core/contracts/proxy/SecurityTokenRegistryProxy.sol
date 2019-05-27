@@ -1,7 +1,8 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.4.24;
 
 import "../storage/EternalStorage.sol";
 import "./OwnedUpgradeabilityProxy.sol";
+
 
 /**
  * @title SecurityTokenRegistryProxy

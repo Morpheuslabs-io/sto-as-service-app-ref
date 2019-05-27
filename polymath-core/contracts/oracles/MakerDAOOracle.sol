@@ -1,10 +1,11 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.4.24;
 
 import "../interfaces/IOracle.sol";
 import "../external/IMedianizer.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 contract MakerDAOOracle is IOracle, Ownable {
+
     address public medianizer;
     address public currencyAddress;
     bytes32 public currencySymbol;
@@ -13,9 +14,9 @@ contract MakerDAOOracle is IOracle, Ownable {
     uint256 public manualPrice;
 
     /*solium-disable-next-line security/no-block-members*/
-    event ChangeMedianizer(address _newMedianizer, address _oldMedianizer);
-    event SetManualPrice(uint256 _oldPrice, uint256 _newPrice);
-    event SetManualOverride(bool _override);
+    event ChangeMedianizer(address _newMedianizer, address _oldMedianizer, uint256 _now);
+    event SetManualPrice(uint256 _oldPrice, uint256 _newPrice, uint256 _time);
+    event SetManualOverride(bool _override, uint256 _time);
 
     /**
       * @notice Creates a new Maker based oracle
@@ -23,7 +24,7 @@ contract MakerDAOOracle is IOracle, Ownable {
       * @param _currencyAddress Address of currency (0x0 for ETH)
       * @param _currencySymbol Symbol of currency
       */
-    constructor(address _medianizer, address _currencyAddress, bytes32 _currencySymbol) public {
+    constructor (address _medianizer, address _currencyAddress, bytes32 _currencySymbol) public {
         medianizer = _medianizer;
         currencyAddress = _currencyAddress;
         currencySymbol = _currencySymbol;
@@ -36,7 +37,7 @@ contract MakerDAOOracle is IOracle, Ownable {
     function changeMedianier(address _medianizer) public onlyOwner {
         require(_medianizer != address(0), "0x not allowed");
         /*solium-disable-next-line security/no-block-members*/
-        emit ChangeMedianizer(_medianizer, medianizer);
+        emit ChangeMedianizer(_medianizer, medianizer, now);
         medianizer = _medianizer;
     }
 
@@ -65,7 +66,7 @@ contract MakerDAOOracle is IOracle, Ownable {
     /**
     * @notice Returns price - should throw if not valid
     */
-    function getPrice() external returns(uint256) {
+    function getPrice() external view returns(uint256) {
         if (manualOverride) {
             return manualPrice;
         }
@@ -80,7 +81,7 @@ contract MakerDAOOracle is IOracle, Ownable {
       */
     function setManualPrice(uint256 _price) public onlyOwner {
         /*solium-disable-next-line security/no-block-members*/
-        emit SetManualPrice(manualPrice, _price);
+        emit SetManualPrice(manualPrice, _price, now);
         manualPrice = _price;
     }
 
@@ -91,7 +92,7 @@ contract MakerDAOOracle is IOracle, Ownable {
     function setManualOverride(bool _override) public onlyOwner {
         manualOverride = _override;
         /*solium-disable-next-line security/no-block-members*/
-        emit SetManualOverride(_override);
+        emit SetManualOverride(_override, now);
     }
 
 }

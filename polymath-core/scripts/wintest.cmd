@@ -18,5 +18,7 @@ for %%i in (test\*.js) do call :PushTest %%i
 
 :PushTest
 if NOT "%1" == "test\a_poly_oracle.js" (
-    set var=%var% %1
+    if NOT "%1" == "test\s_v130_to_v140_upgrade.js" (
+        set var=%var% %1
+    )
 )

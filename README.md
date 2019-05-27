@@ -2,8 +2,10 @@
 
 This is a reference application to issue and manage STO tokens based on Polymath. The platform users can explore, modify, run and test this application.
 
+The key features of the STO reference applicatoin include:
+
   - Provide STO (Security Token Offering) as a service with UI that facilitates the STO launching by simply specifying the required information. 
-  - For use, Metamask as the user in-browser wallet is needed.
+  - Use Metamask as the user in-browser wallet.
 
 ## Components and Deployment Sequence
 
@@ -45,3 +47,6 @@ This is a web app running and listenning at port `8080`.
 To determine its URL, have a look at the `Machines` small panel and then right-click on (for example) `truffle/dev-machine` to select `Servers`. This will show up a view where the web-app `https` link can be seen at the
 row `http-server`. Please be noted that, all the ports displayed in this view mean to be reserved for external access.
 
+# Copyright info
+
+This applicaiton is originally from Polymath, please refer to the license file.

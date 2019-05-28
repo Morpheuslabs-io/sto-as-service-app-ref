@@ -49,6 +49,14 @@ This is a web app running and listenning at port `8080`.
 To determine its URL, have a look at the `Machines` small panel and then right-click on (for example) `truffle/dev-machine` to select `Servers`. This will show up a view where the web-app `https` link can be seen at the
 row `http-server`. Please be noted that, all the ports displayed in this view mean to be reserved for external access.
 
+---
+
+## Customization
+
+Please refer to separate files with prefix `Customization-...`
+
+---
+
 # Copyright info
 
 This applicaiton is originally from Polymath, please refer to the LICENSE file under the folder policy-core.

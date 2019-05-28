@@ -1,0 +1,38 @@
+# Feature customization of the Polymath's STO system
+
+  - Please refer to the README file for a overview of the STO system.
+
+  - Please be noted that the components of `new-polymath-...` are not in use.
+
+## Disable STO creation fee
+
+The following files need to be changed:
+
+1. `polymath-core/migrations/2_deploy_contracts.js`
+
+Used by the contract deployment process that will set the fees.
+
+Replace the below snippet
+
+```
+const cappedSTOSetupCost = new BigNumber(20000).times(new BigNumber(10).pow(18));   // 20K POLY fee
+const usdTieredSTOSetupCost = new BigNumber(100000).times(new BigNumber(10).pow(18));   // 100K POLY fee
+const initRegFee = new BigNumber(250).times(new BigNumber(10).pow(18));      // 250 POLY fee for registering ticker or security token in registry
+```
+
+with
+
+```
+const cappedSTOSetupCost = new BigNumber(0);
+const usdTieredSTOSetupCost = new BigNumber(0);
+const initRegFee = new BigNumber(0);
+```
+
+2. `polymath-core/contracts/SecurityTokenRegistry.sol`
+
+Disable the below code line number `183`. Otherwise, `SecurityTokenRegistry` deployment will be failed.
+
+```
+require(_stLaunchFee != 0 && _tickerRegFee != 0, "Fees should not be 0");
+```
+

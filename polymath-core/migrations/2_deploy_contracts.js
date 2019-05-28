@@ -32,14 +32,14 @@ const SecurityToken = artifacts.require('./tokens/SecurityToken.sol')
 
 let BigNumber = require('bignumber.js');
 
-const cappedSTOSetupCost = new BigNumber(20000).times(new BigNumber(10).pow(18));   // 20K POLY fee
-const usdTieredSTOSetupCost = new BigNumber(100000).times(new BigNumber(10).pow(18));   // 100K POLY fee
-const initRegFee = new BigNumber(250).times(new BigNumber(10).pow(18));      // 250 POLY fee for registering ticker or security token in registry
+// const cappedSTOSetupCost = new BigNumber(20000).times(new BigNumber(10).pow(18));   // 20K POLY fee
+// const usdTieredSTOSetupCost = new BigNumber(100000).times(new BigNumber(10).pow(18));   // 100K POLY fee
+// const initRegFee = new BigNumber(250).times(new BigNumber(10).pow(18));      // 250 POLY fee for registering ticker or security token in registry
 
 // Disable all kinds of fee
-// const cappedSTOSetupCost = new BigNumber(0).times(new BigNumber(10).pow(18));   // 20K POLY fee
-// const usdTieredSTOSetupCost = new BigNumber(0).times(new BigNumber(10).pow(18));   // 100K POLY fee
-// const initRegFee = new BigNumber(0).times(new BigNumber(10).pow(18));      // 250 POLY fee for registering ticker or security token in registry
+const cappedSTOSetupCost = new BigNumber(0).times(new BigNumber(10).pow(18));   // 20K POLY fee
+const usdTieredSTOSetupCost = new BigNumber(0).times(new BigNumber(10).pow(18));   // 100K POLY fee
+const initRegFee = new BigNumber(0).times(new BigNumber(10).pow(18));      // 250 POLY fee for registering ticker or security token in registry
 
 let PolyToken;
 let UsdToken;

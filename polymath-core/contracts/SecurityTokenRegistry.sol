@@ -180,7 +180,7 @@ contract SecurityTokenRegistry is ISecurityTokenRegistry, EternalStorage {
             _STFactory != address(0) && _polyToken != address(0) && _owner != address(0) && _polymathRegistry != address(0),
             "Invalid address"
         );
-        require(_stLaunchFee != 0 && _tickerRegFee != 0, "Fees should not be 0");
+        // require(_stLaunchFee != 0 && _tickerRegFee != 0, "Fees should not be 0");
         set(POLYTOKEN, _polyToken);
         set(STLAUNCHFEE, _stLaunchFee);
         set(TICKERREGFEE, _tickerRegFee);

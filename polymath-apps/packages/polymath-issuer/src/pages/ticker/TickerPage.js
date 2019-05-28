@@ -82,8 +82,7 @@ class TickerPage extends Component<Props, State> {
               days, and is permanently yours once you create your Token. This
               reservation ensures that no other organization can create a token
               symbol identical to yours using the Morpheus Labs platform. This
-              operation carries a cost of: {this.state.tickerRegistrationFee}{' '}
-              POLY.
+              operation carries with no cost except the mining fee (aka gas fee).
             </Heading>
             <div className="pui-clearfix" />
             <Remark title="Note">

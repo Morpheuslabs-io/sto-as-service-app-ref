@@ -88,11 +88,7 @@ class Header extends Component<Props> {
         <PageWrap>
           <Inner>
             <Link to="/">
-              {logo ? (
-                <Block as="img" src={logo} alt="Company Logo" width="188" />
-              ) : (
-                <Block as="img" src={polyLogo} alt="Polymath" width="188" />
-              )}
+              <Block as="img" src={polyLogo} alt="Polymath" width="90" />
             </Link>
             {account ? (
               <Flex as="ul" ml="auto" className="pui-header-menu">
@@ -104,14 +100,16 @@ class Header extends Component<Props> {
                   />
                   {network}
                 </li>
-                <li>
-                  <img src={polyIcon} alt="Your POLY balance" />
-                  {balance
-                    ? thousandsDelimiter(
-                        new BigNumber(balance).integerValue()
-                      ) + ' POLY'
-                    : '...'}
-                </li>
+                {
+                // <li>
+                //   <img src={polyIcon} alt="Your POLY balance" />
+                //   {balance
+                //     ? thousandsDelimiter(
+                //         new BigNumber(balance).integerValue()
+                //       ) + ' POLY'
+                //     : '...'}
+                // </li>
+                }
                 <li>
                   <img src={accountIcon} alt="Account" />
                   {addressShortifier(account)}

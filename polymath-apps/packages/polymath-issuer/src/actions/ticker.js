@@ -45,25 +45,8 @@ export const reserve = (details: Object) => async (
     ui.confirm(
       <div>
         <p>
-          Completion of your token symbol reservation will require two wallet
-          transactions.
-        </p>
-        {!isApproved ? (
-          <div>
-            <p>
-              • The first transaction will be used to pay for the token symbol
-              reservation cost of:
-            </p>
-            <div className="bx--details poly-cost">{feeView} POLY</div>
-          </div>
-        ) : (
-          ''
-        )}
-        <p>
-          • {!isApproved ? 'The second' : 'This'} transaction will be used to
-          pay the mining fee (aka gas fee) to complete the reservation of your
-          token symbol.
-          <br />
+          Completion of your token symbol reservation will require one wallet
+          transaction with some paid mining fee (aka gas fee).
         </p>
         <p>
           Please hit &laquo;CONFIRM&raquo; when you are ready to proceed. Once
@@ -71,8 +54,7 @@ export const reserve = (details: Object) => async (
           sent to the blockchain and will be immutable unless it expires. Any
           change prior to your reservation expiry will require that you start
           the process over using another token symbol.
-          <br /> If you do not wish to pay the token symbol reservation fee or
-          wish to review your information, simply select &laquo;CANCEL&raquo;.
+          <br /> To reject, simply select &laquo;CANCEL&raquo;.
         </p>
       </div>,
       async () => {

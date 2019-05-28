@@ -242,18 +242,18 @@ class ProvidersPage extends Component<Props, State> {
     }
 
     return (
-      <Page title={`${token.ticker} Providers – Polymath`}>
+      <Page title={`${token.ticker} Providers – Morpheus Labs`}>
         <Progress />
         <Remark title="Data Privacy">
           None of your data entered in the application form(s) is stored on
-          Polymath servers or shared with any third party other than the firm(s)
+          Morpheus Labs servers or shared with any third party other than the firm(s)
           you decide to apply for.
         </Remark>
         <h1 className="pui-h1">Choose Your Providers</h1>
         <Grid.Row>
           <Grid.Col gridSpan={[12, 12, 7]}>
             <h3 className="pui-h3">
-              Your Polymath dashboard is integrated with several providers to
+              Your Morpheus Labs dashboard is integrated with several providers to
               streamline your on-boarding process and access to their services.
               The information you enter in each associated form will be sent
               automatically to the firm(s) you apply for. Upon review of your

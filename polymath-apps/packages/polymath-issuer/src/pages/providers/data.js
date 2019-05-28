@@ -35,14 +35,14 @@ export const categories: Array<SPCategory> = [
     id: 0,
     title: 'Advisory',
     desc:
-      'Advisory firms may help you plan and execute your STO. Your Polymath dashboard is integrated with the ' +
+      'Advisory firms may help you plan and execute your STO. Your Morpheus Labs dashboard is integrated with the ' +
       'following Advisory firms. Alternatively, you can elect to use your own Advisory services.',
   },
   {
     id: 1,
     title: 'Legal',
     desc:
-      'Law firms may advise you on the planning and execution of your STO. Your Polymath dashboard is integrated ' +
+      'Law firms may advise you on the planning and execution of your STO. Your Morpheus Labs dashboard is integrated ' +
       'with the following Law firms. Alternatively, you can elect to use your own Law firm or General Counsel.',
   },
   {

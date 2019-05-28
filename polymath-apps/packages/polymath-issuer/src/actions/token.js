@@ -197,35 +197,26 @@ export const issue = (values: Object) => async (
   dispatch(
     ui.confirm(
       <div>
-        <p>
-          Completion of your token creation will require{' '}
-          {limitInvestors ? 'three' : !isApproved ? 'two' : 'one'} wallet
-          transaction(s).
-        </p>
-        {!isApproved ? (
+        {limitInvestors ? (
           <div>
             <p>
-              • The first transaction will be used to prepare for the payment of
-              the token creation cost of:
+              Completion of your token creation will require two wallet transactions.
             </p>
-            <div className="bx--details poly-cost">{feeView} POLY</div>
+            <p>
+              • The first transaction (with some paid mining fee) is for token creation.
+            </p>
+            <p>
+              • The second transaction (with some paid mining fee) is for limiting the number of investors
+              who can hold your token.
+            </p>
           </div>
         ) : (
-          ''
-        )}
-        <p>
-          • {!isApproved ? 'The second' : 'This'} transaction will be used to
-          pay for the token creation cost (POLY + mining fee) to complete the
-          creation of your token.
-        </p>
-        {limitInvestors && (
           <p>
-            • The {!isApproved ? 'third' : 'second'} transaction will be used to
-            pay the mining fee (aka gas fee) to limit the number of investors
-            who can hold your token.
-            <br />
+            Completion of your token creation will require one transaction (with some paid mining fee) for token creation.
           </p>
-        )}
+        ) 
+        }
+        <br />
         <p>
           Please hit &laquo;CONFIRM&raquo; when you are ready to proceed. Once
           you hit &laquo;CONFIRM&raquo;, your security token will be created on

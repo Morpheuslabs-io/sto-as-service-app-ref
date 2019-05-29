@@ -70,6 +70,8 @@ row `http-server`. Please be noted that, all the ports displayed in this view me
 
 ## Core Smart Contract
 
+### Config, compile and deploy
+
 Located in folder `polymath-core`
 
   - Configuration:
@@ -80,7 +82,34 @@ Located in folder `polymath-core`
 
   - Deploy to `Kovan`:  `yarn migrate:kovan`
 
-For any new deployment of contracts, the deployed adddress of `PolymathRegistry` contract in `polymath-apps/packages/polymath-offchain/.env` and in `polymath-apps/packages/polymath-issuer/.env` must be updated.
+Things need to be done after any new deployment of contracts:
+
+  - The deployed adddress of `PolymathRegistry` contract in `polymath-apps/packages/polymath-offchain/.env` and in `polymath-apps/packages/polymath-issuer/.env` must be updated.
+
+  - The newly-compiled JSON file of the modified contract (located in `polymath-core/build/contracts`) must be copied to `polymath-apps/packages/new-polymath-scripts/src/fixtures/contracts/`. Currently, due to conflict in versions, please do not copy all JSON files. Instead, copy only the modified contract's JSON file.
+
+### Interaction between frontend (i.e. issuer board) and smart contract
+
+  - The interaction is done via a wrapper component that is `polymath-apps/packages/polymath-js`.
+Each smart contract has an associated wrapper ReactJS component.
+
+  - For example, the contract `polymath-core/contracts/SecurityTokenRegistry.sol` has wrapper that is `polymath-apps/packages/polymath-js/src/contracts/SecurityTokenRegistry.js`
+
+  - Frontend code, for example the file `polymath-apps/packages/polymath-issuer/src/actions/ticker.js` imports `SecurityTokenRegistry` wrapper and invoke its APIs as follows: 
+
+```
+import { SecurityTokenRegistry, PolyToken } from '@polymathnetwork/js';
+
+const fee = await SecurityTokenRegistry.registrationFee();
+```
+
+  - Wrapper, for example the file `polymath-apps/packages/polymath-js/src/contracts/SecurityTokenRegistry.js` imports the JSON file (containing contract ABI) and expose itself as follows:
+
+```
+import artifact from '@polymathnetwork/polymath-scripts/fixtures/contracts/SecurityTokenRegistry.json';
+
+export default new SecurityTokenRegistry(artifact);
+```
 
 ---
 

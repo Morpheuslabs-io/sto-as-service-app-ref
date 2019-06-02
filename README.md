@@ -10,7 +10,7 @@ The key features of the STO reference applicatoin include:
 
 ## Components and Deployment Sequence
 
-The following off-chain server components are required to run the STO application:
+The following server components are required to run the STO application:
 
   - `MongoDB`: database server
   - `Off-chain API server`: provide rest APIs for data storage based on MongoDB
@@ -28,7 +28,9 @@ It's recommended to use the stack on the ML BPaaS platform with at least 4GB RAM
 
 ### MongoDB
 
-Start it by running this cmd `pm2 start script_start_mongo.sh`. Its data is stored in the folder `mongodb`
+  - Create an empty folder named `mongodb` in parent directory to hold data
+
+  - Start it by running this cmd `pm2 start script_start_mongo.sh`
 
 ### Install dependencies
 

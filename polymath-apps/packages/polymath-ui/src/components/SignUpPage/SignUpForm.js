@@ -51,13 +51,15 @@ class SignUpForm extends Component<Props> {
                   I accept that Polymath may contact me via email to send me
                   updates on my token issuance process.
                   <br />
-                  For more details, please consult our{' '}
-                  <Link
-                    target="_blank"
-                    href="https://polymath.network/privacypolicy.html"
-                  >
-                    Privacy Policy
-                  </Link>
+                  {
+                  // For more details, please consult our{' '}
+                  // <Link
+                  //   target="_blank"
+                  //   href="https://polymath.network/privacypolicy.html"
+                  // >
+                  //   Privacy Policy
+                  // </Link>
+                  }
                 </Paragraph>
               </Fragment>
             }
@@ -71,7 +73,7 @@ class SignUpForm extends Component<Props> {
                 I accept the&nbsp;
                 <Link
                   target="_blank"
-                  href="https://polymath.network/termsofservice.html"
+                  href=""
                 >
                   Terms of Service
                 </Link>

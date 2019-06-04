@@ -39,12 +39,14 @@ class SignUpPage extends Component<Props> {
 
   render() {
     return (
-      <PageCentered title="Sign Up – Polymath" id="sign-up">
+      <PageCentered title="Sign Up – Morpheus Labs" id="sign-up">
         <ContentBox maxWidth={735}>
           <div className="pui-single-box-header">
-            <div className="pui-single-box-bull">
-              <img src={bull} alt="Bull" />
-            </div>
+          {
+            // <div className="pui-single-box-bull">
+            //   <img src={bull} alt="Bull" />
+            // </div>
+          }
             <Heading as="h1" variant="h1">
               Create Your Account
             </Heading>
@@ -58,16 +60,18 @@ class SignUpPage extends Component<Props> {
             enableSubmit={this.props.enableSubmit}
           />
           <p className="pui-input-hint">
-            Polymath collects information to understand how you interact with
+            Morpheus Labs collects information to understand how you interact with
             the Service and to make improvements.
             <br />
-            <a
-              href="https://www.fullstory.com/optout/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Click here to disable the collection of this information
-            </a>
+            {
+            // <a
+            //   href="https://www.fullstory.com/optout/"
+            //   target="_blank"
+            //   rel="noopener noreferrer"
+            // >
+            //   Click here to disable the collection of this information
+            // </a>
+            }
           </p>
         </ContentBox>
       </PageCentered>

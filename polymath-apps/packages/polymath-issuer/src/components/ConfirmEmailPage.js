@@ -65,9 +65,11 @@ class ConfirmEmailPage extends Component {
       <PageCentered title="Sign In – Morpheus Labs" id="verify-email-address">
         <ContentBox maxWidth={735}>
           <div className="pui-single-box-header">
-            <div className="pui-single-box-bull">
-              <img src={bull} alt="Bull" />
-            </div>
+          {
+            // <div className="pui-single-box-bull">
+            //   <img src={bull} alt="Bull" />
+            // </div>
+          }
             <Heading as="h1" variant="h1">
               Verify Your Email Address
             </Heading>

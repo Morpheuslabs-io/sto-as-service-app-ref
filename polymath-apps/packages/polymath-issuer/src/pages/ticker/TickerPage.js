@@ -70,10 +70,11 @@ class TickerPage extends Component<Props, State> {
       >
         <ContentBox maxWidth={735}>
           <div className="pui-single-box-header">
-            <div className="pui-single-box-bull">
-              {// <img src={bull} alt="Bull" />
-              }
-            </div>
+            {
+            // <div className="pui-single-box-bull">
+            //   <img src={bull} alt="Bull" />
+            // </div>
+            }
             <Heading as="h1" variant="h1">
               Reserve Your Token Symbol
             </Heading>
